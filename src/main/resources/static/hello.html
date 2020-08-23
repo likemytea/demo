@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>test加密</title>
+	<!-- <script src="http://test.mystaticdomain.com/js/jquery.min.js?v=2.1.4"></script> -->
+    <script src="js/crypto-3.1.9.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+	<body>
+	ccccccccc
+	<input type = "button" name ="button" onClick="javascript:testLoginstatus();" value="aaa">
+	<input type ="text" id ="ttt"  value ="a+c"/>
+	</body>
+</html>
+
+<script type="text/javascript">
+    function testLoginstatus(){
+    var senddata = $("#ttt").val();
+    var key = '6$%^bb!1';
+   
+    //加密
+    senddata = encryptByDES(senddata,key);
+
+    //替换+号
+    senddata = senddata.replace(/\+/g,"%2B");
+    
+	   	 $.ajax({
+		     type:'post',
+		     url:'/jiami?x='+senddata,
+		     async: false,
+		     data:{sender:senddata},
+		     cache:false,
+		     dataType:'json',
+		     success:function(data){
+		     },
+             error:function(XMLHttpRequest, textStatus, errorThrown) {
+               //alert(XMLHttpRequest.responseText);
+             }
+		 });
+    }
+    // DES加密
+	function encryptByDES(message, key) {
+	    var keyHex = CryptoJS.enc.Utf8.parse(key);
+	    var encrypted = CryptoJS.DES.encrypt(message, keyHex, {
+	        mode: CryptoJS.mode.ECB,
+	        padding: CryptoJS.pad.Pkcs7
+	    });
+	    return encrypted.toString();
+	}
+</script>

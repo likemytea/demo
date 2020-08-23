@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>test_pdf_priview_liuxing11</title>
+</head>
+<body>
+<input type="button" name = "yulan" value ="预览..." onclick="showpdf('1');">
+<input type="button" name = "yulan" value ="隐藏预览..." onclick="showpdf('2');">
+<div id="my-pdf"></div>
+<script src="js/pdfobject.min.js"></script>
+<script>
+showpdf('1');
+function showpdf(isshow){
+	if(isshow==='2'){
+		document.getElementById('my-pdf').style.display='none';
+		return;
+	}
+	if(isshow==='1'){
+		document.getElementById('my-pdf').style.display='block';
+		var options = {
+				width: "70%",
+			    height: "70%",//可以设置宽高，也可以在外部css设置
+			    page: 1,  //默认一开始加载展示第几页
+			    fallbackLink: "<p>This is a <a href='[url]'>fallback link</a></p>",
+			    pdfOpenParams: {
+
+			    }
+			}
+			//调用展示方法
+			var input = {'MMMMMhaha 433fsf 哈哈':'ddd',bbb:'ccccc'};
+			JSON.stringify(input);
+			PDFObject.embed("http://localhost:8080/getPdfFile?input="+encodeURIComponent(JSON.stringify(input)), "#my-pdf", options);	
+
+		return;
+	}
+
+}
+
+</script>
+</body>
+</html>
