@@ -24,10 +24,14 @@ public class DemoApplication {
 	@Autowired
 	private DesignServiceImpl designServiceImpl;
 
+	/**
+	 * 对外提供支付服务的接口
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/payfor", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String payfor(@RequestParam String orderNo) throws Exception {
 		System.out.println("payfor-：" + orderNo);
+		// 定义使用的策略，这里使用公共策略
 		String res = designServiceImpl.execPayforOrder(orderNo);
 		if ("success".equals(res)) {
 			return "OK";
