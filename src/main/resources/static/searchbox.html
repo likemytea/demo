@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>搜索框</title>
+<script type="text/javascript">
+ 
+</script>
+</head>
+	<body>
+
+		<select name="cars" style="width:400px;height:30px;">
+			<option value="volvo">Volhah哈哈vo</option>
+			<option value="saab">Saab</option>
+			<option value="fiat" selected="selected">Fiat</option>
+			<option value="audi">Audi</option>
+		</select>
+
+
+<div style="position:relative;">
+<span style="margin-left:100px;width:18px;overflow:hidden;">
+<select style="width:118px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">
+<option value="德国">德国</option>
+<option value="挪威">挪威</option>
+<option value="瑞士"> 瑞士</option>
+</select></span><input name="box" style="width:100px;position:absolute;left:0px;">
+</div>
+-----------------------------------------------
+
+
+<input id="fruit" name="aaa" list="fruitlist" style="height:29px;border:1px solid #DEE1E7;border-radius:3px;"/>
+<datalist id="fruitlist" cssClass="border-color:grey;">
+      <option value="">请选择</option>
+      <option value="apple">苹果</option>
+      <option value="banana">香蕉</option>
+</datalist>
+
+	</body>
+</html>
+
