@@ -1,41 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>搜索框</title>
+<meta charset="UTF-8">
+<title>鼠标点击时加载3222</title>
+<script type="text/javascript" src="js/jquery-1.js"></script>
 <script type="text/javascript">
- 
+	//需要添加的数据内容,可以通过ajax请求获取
+	var cities = [
+	{label:"西安",value:"西安"},
+	{label:"湖北",value:"湖北"},
+	{label:"武汉",value:"武汉"}
+	]; 
+	//获取datalist的dom
+	//var ss = document.getElementById("citieskey");
+	//定义加载城市的函数
+	function loadcities(){
+		for(var i = 0;i < cities.length; i ++){
+			var city = cities[i];
+			//纯js实现的方式
+			/*var op=document.createElement("option"); 
+			op.setAttribute("label",city.label);
+			op.setAttribute("value",city.value); 
+			ss.appendChild(op);*/
+			
+			//jquery实现的方式
+			$("#citieskey").append('<option label="'+city.label+'" value="'+city.value+'"></option>');
+	    }
+	}
+	//页面加载完时加载此函数
+	window.onload = function(){
+	loadcities();
+	}
 </script>
 </head>
-	<body>
-
-		<select name="cars" style="width:400px;height:30px;">
-			<option value="volvo">Volhah哈哈vo</option>
-			<option value="saab">Saab</option>
-			<option value="fiat" selected="selected">Fiat</option>
-			<option value="audi">Audi</option>
-		</select>
-
-
-<div style="position:relative;">
-<span style="margin-left:100px;width:18px;overflow:hidden;">
-<select style="width:118px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">
-<option value="德国">德国</option>
-<option value="挪威">挪威</option>
-<option value="瑞士"> 瑞士</option>
-</select></span><input name="box" style="width:100px;position:absolute;left:0px;">
-</div>
------------------------------------------------
-
-
-<input id="fruit" name="aaa" list="fruitlist" style="height:29px;border:1px solid #DEE1E7;border-radius:3px;"/>
-<datalist id="fruitlist" cssClass="border-color:grey;">
-      <option value="">请选择</option>
-      <option value="apple">苹果</option>
-      <option value="banana">香蕉</option>
-</datalist>
-
-	</body>
+<body>
+	选择城市:<input type="text" name="cname" list="citieskey"/><br/>
+	<datalist id="citieskey"></datalist>
+</body>
 </html>
-
