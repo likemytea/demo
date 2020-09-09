@@ -5,36 +5,114 @@
 <title>鼠标点击时加载3222</title>
 <script type="text/javascript" src="js/jquery-1.js"></script>
 <script type="text/javascript">
-	//需要添加的数据内容,可以通过ajax请求获取
-	var cities = [
-	{label:"西安",value:"西安"},
-	{label:"湖北",value:"湖北"},
-	{label:"武汉",value:"武汉"}
-	]; 
-	//获取datalist的dom
-	//var ss = document.getElementById("citieskey");
-	//定义加载城市的函数
-	function loadcities(){
-		for(var i = 0;i < cities.length; i ++){
-			var city = cities[i];
-			//纯js实现的方式
-			/*var op=document.createElement("option"); 
-			op.setAttribute("label",city.label);
-			op.setAttribute("value",city.value); 
-			ss.appendChild(op);*/
-			
-			//jquery实现的方式
-			$("#citieskey").append('<option label="'+city.label+'" value="'+city.value+'"></option>');
-	    }
+
+$(function(){
+ 
+ $("#customer").live("keydown",function(event){
+ 
+  customerSearch(event);//keyDownSearch
+ 
+  });
+ 
+});
+function customerSearch(e){
+	 
+	var theEvent = e || window.event;  
+	 
+	    var key = theEvent.keyCode || theEvent.which || theEvent.charCode;  
+	 
+	    if (key == 13) {  
+	 
+	    var param=$("#customer").val().trim();
+	 
+	    if(param!=null&¶m!=""){
+	 
+	        ajaxPost(url,param,function(data){
+	 
+	         if(data.code==200){
+	 
+	             var customerList=data.data;
+	 
+	             var chtml="<table>"
+	 
+	             for(var i=0;i<customerList.length;i++){
+	 
+	             var customer=customerList[i];
+	 
+	             console.log(customer);
+	 
+	         chtml+="<tr onmouseover='mOver(this);' onmouseout='mOut(this);'                         onclick=choseCustomer("+customer.id+",'"+customer.name+"'); ><td>"+customer.name+"</td>        </tr>";
+	 
+	     }
+	 
+	     chtml+="</table>"
+	 
+	     console.log(chtml);
+	 
+	     $("#customerDiv").html(chtml);
+	 
+	    // $("#customerDiv").show();
+	 
+	     $("#customerDiv").css({backgroundColor:'#A7D5ED',position:"absolute",top:$("#customer").position().top +22 ,left:$("#customer").position().left,overflow:'scroll',overflowX:'hidden',height:200,width:250}).show();
+	 
+	     hidediv("customerDiv");
+	 
+	     }
+	 
+	 });
+	 
 	}
-	//页面加载完时加载此函数
-	window.onload = function(){
-	loadcities();
+	 
+	    }
+	 
+	}
+	 
+	function mOver(obj){
+	 
+	    obj.style.background="#A9A9A9";
+	 
+	}
+	 
+	function mOut(obj){
+	 
+	    obj.style.background="";
+	 
+	}
+	 
+	function choseCustomer(customerId,customerName){
+	 
+	    $("#customerId").val(customerId);
+	 
+	    $("#customer").val(customerName);
+	 
+	    $("#customerDiv").hide();
+	 
+	}
+	 
+	function hidediv(name){
+	 
+	 var myDiv = document.getElementById(name);
+	 
+	    document.addEventListener("click",function(){
+	 
+	        myDiv.style.display="none";
+	 
+	    });
+	 
+	    myDiv.addEventListener("click",function(event){
+	 
+	        event=event||window.event;
+	 
+	        event.stopPropagation();
+	 
+	    });
+	 
 	}
 </script>
 </head>
 <body>
-	选择城市:<input type="text" name="cname" list="citieskey"/><br/>
-	<datalist id="citieskey"></datalist>
+	<tr><td>客户：<input type="text" id="customer" name="customer" class="customer" style="width:250px" placeholder="请输入客户名称"/><input type="hidden" name="customerId" id="customerId">
+ 
+   <div id="customerDiv" ></div></td></tr>
 </body>
 </html>

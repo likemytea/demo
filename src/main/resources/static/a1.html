@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>a1</title>
+<style type = "text/css">
+#msg{
+	display:none;
+	position:absolute;
+	background:gray;
+	width:200px;
+	height:300px;
+	overflow:auto
+}
+.bg{
+    background-color: gray;
+}
+.bg:hover{
+    background-color: burlywood;
+}
+</style>
+
+<script type="text/javascript" src="js/jquery-1.js"></script>
+<script type="text/javascript">
+function setDivHidden()
+{
+	 var addr=document.getElementById("msg")
+	 addr.style.display = "none"; 
+}
+function getDivPosition(o)
+{
+	 var point=new Object();
+	 point.x=o.offsetLeft;
+	 point.y=o.offsetTop+o.offsetHeight;
+	 while(o=o.offsetParent)
+	 {
+	  point.x+=o.offsetLeft;
+	  point.y+=o.offsetTop;
+	 }
+	 var addr=document.getElementById("msg")
+	 addr.style.left=point.x+"px";
+	 addr.style.top=point.y+"px";
+	 addr.style.display = "block";
+}
+
+</script>
+</head>
+<body>--------------------------------------------------
+<input type ="text" id ="myinput" placeholder="请输入关键词" onfocus="getDivPosition(this)" onfocusout="setDivHidden()"/>
+<div id="msg">
+	<ul>
+		<li class="bg">liu2yi1@test.com</li>
+		<li class="bg">liu2er4@test.com</li>
+		<li class="bg">liu2san1@test.com</li>
+		<li class="bg">chen2yi1@test.com</li>
+		<li class="bg">chen2er4@test.com</li>
+		<li class="bg">chen2san1@test.com</li>
+		<li class="bg">zhang1yi1@test.com</li>
+		<li class="bg">zhang1er4@test.com</li>
+		<li class="bg">zhang1san1@test.com</li>
+		<li class="bg">li3er4@test.com</li>
+		<li class="bg">li3san1@test.com</li>
+		<li class="bg">li3si4@test.com</li>
+		<li class="bg">wang2san1@test.com</li>
+		<li class="bg">wang2si4@test.com</li>
+		<li class="bg">wang2wu3@test.com</li>
+		<li class="bg">zhao4si4@test.com</li>
+		<li class="bg">zhao4wu3@test.com</li>
+		<li class="bg">zhao4wu3@test.com</li>
+		<li class="bg">sun1wu3@test.com</li>
+		<li class="bg">sun1liu4@test.com</li>
+		<li class="bg">sun1qi1@test.com</li>
+		<li class="bg">zhou1liu4@test.com</li>
+		<li class="bg">zhou1qi1@test.com</li>
+		<li class="bg">zhou1ba1@test.com</li>
+		<li class="bg">wu2qi1@test.com</li>
+		<li class="bg">wu2ba1@test.com</li>
+		<li class="bg">wu2jiu3@test.com</li>
+		<li class="bg">zheng4ba1@test.com</li>
+		<li class="bg">zheng4jiu3@test.com</li>
+		<li class="bg">zheng4shi2@test.com</li>
+	</ul>
+</div>
+</body>
+</html>
