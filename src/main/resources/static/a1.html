@@ -43,39 +43,68 @@ function getDivPosition(o)
 	 addr.style.display = "block";
 }
 
+function updateLi(thekey,theval){
+	var ele = document.createElement('li');
+	ele.innerHTML='<li id="'+thekey+'" class="bg">'+theval+'</li>';
+	document.getElementById('msgul').appendChild(ele);
+}
+
+//鼠标键入事件
+function flushCombo(){
+	//清空层里边所有的li
+	$("#msgul").find("li").remove();
+	var input = document.getElementById('myinput').value;
+	if(input==''){
+		return;
+	}
+	var reg =  new RegExp(input);
+	//获取原始数据
+	var original = getOriginalData();
+	//解析为数组
+	var dataArray = JSON.parse(original);
+	//遍历数组
+	for (var i = 0, l = dataArray.length; i < l; i++) {
+		var theval='';
+		var thekey='';
+	    for (var key in dataArray[i]) {
+	    	//找到某一条里边的name
+	    	if(key=='name'){
+	    		//确定这个name是否满足搜索条件
+	    		if(reg.test(dataArray[i][key])){
+	    			theval = dataArray[i][key];
+	    		}else{
+		    		continue;
+		    	}
+	    		
+	    	}
+	    	//设置name对应的业务key
+	    	if(key=='strVal'){
+	    		thekey=dataArray[i][key];
+	    	}
+	    	//过滤掉没用的数据，因为执行到这里的还可能是数组中name前的key-value
+	    	if(theval.length>0&&thekey.length>0){
+	    		updateLi(thekey,theval);
+	    	}
+	    }
+	}
+}
+
+
+function getOriginalData(){
+	var a = '[{\"name\":\"全部\",\"selected\":\"true\"},{\"id\":\"1\",\"name\":\"核心企业\",\"selected\":\"false\",\"strVal\":\"01\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"}]';
+	return a;
+}
 </script>
 </head>
-<body>--------------------------------------------------
-<input type ="text" id ="myinput" style="width:197px; height:20px;" placeholder="请输入关键词" onfocus="getDivPosition(this)" onfocusout="setDivHidden()"/>
+<body>
+
+--------------------------------------------------
+<input type ="text" id ="myinput" oninput="flushCombo()" style="width:197px; height:20px;" placeholder="请输入关键词" onfocus="getDivPosition(this)" onfocusout="setDivHidden()"/>
+<button onclick="updateLi()">点我就加Li</button>
 <div id="msg">
-	<ul style="list-style-type:none;padding:5px;margin:0;">
+	<ul id="msgul" style="list-style-type:none;padding:5px;margin:0;">
 		<li class="bg">liu2yi1@test.com</li>
 		<li class="bg">liu2er4@test.com</li>
-		<li class="bg">liu2san1@test.com</li>
-		<li class="bg">chen2yi1@test.com</li>
-		<li class="bg">chen2er4@test.com</li>
-		<li class="bg">chen2san1@test.com</li>
-		<li class="bg">zhang1yi1@test.com</li>
-		<li class="bg">zhang1er4@test.com</li>
-		<li class="bg">zhang1san1@test.com</li>
-		<li class="bg">li3er4@test.com</li>
-		<li class="bg">li3san1@test.com</li>
-		<li class="bg">li3si4@test.com</li>
-		<li class="bg">wang2san1@test.com</li>
-		<li class="bg">wang2si4@test.com</li>
-		<li class="bg">wang2wu3@test.com</li>
-		<li class="bg">zhao4si4@test.com</li>
-		<li class="bg">zhao4wu3@test.com</li>
-		<li class="bg">zhao4wu3@test.com</li>
-		<li class="bg">sun1wu3@test.com</li>
-		<li class="bg">sun1liu4@test.com</li>
-		<li class="bg">sun1qi1@test.com</li>
-		<li class="bg">zhou1liu4@test.com</li>
-		<li class="bg">zhou1qi1@test.com</li>
-		<li class="bg">zhou1ba1@test.com</li>
-		<li class="bg">wu2qi1@test.com</li>
-		<li class="bg">wu2ba1@test.com</li>
-		<li class="bg">wu2jiu3@test.com</li>
 		<li class="bg">zheng4ba1@test.com</li>
 		<li class="bg">zheng4jiu3@test.com</li>
 		<li class="bg">zheng4shi2@test.com</li>
