@@ -94,23 +94,33 @@ function flushCombo(isOnfocusEvent){
 
 
 function getOriginalData(){
-	var a = '[{\"name\":\"全部\",\"selected\":\"true\"},{\"id\":\"1\",\"name\":\"核心企业\",\"selected\":\"false\",\"strVal\":\"01\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"}]';
+	var a = '[{\"name\":\"全部\",\"selected\":\"true\"},{\"id\":\"1\",\"name\":\"核心企业\",\"selected\":\"false\",\"strVal\":\"01\"},{\"id\":\"2\",\"name\":\"借款1111企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款222222企业\",\"selected\":\"false\",\"strVal\":\"03\"},{\"id\":\"2\",\"name\":\"借款3333333企业\",\"selected\":\"false\",\"strVal\":\"04\"},{\"id\":\"2\",\"name\":\"借款444444444444企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借3232222款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"1211借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业323444\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款企业\",\"selected\":\"false\",\"strVal\":\"02\"},{\"id\":\"2\",\"name\":\"借款777企业\",\"selected\":\"false\",\"strVal\":\"0072\"}]';
 	return a;
+}
+
+$(document).ready(function() {
+	//li点击事件
+    $(document).on("click", "li.bg", function() {
+    	//赋值隐藏域，用于传给后台
+        document.getElementById("myinputChoice").value = $(this).attr('id');
+        //赋值给text文本框
+        document.getElementById("myinput").value = $(this).text();
+        //隐藏下拉框
+        setDivHidden();
+    });
+});
+function testRes(){
+	alert(document.getElementById("myinputChoice").value);
 }
 </script>
 </head>
 <body>
-
 --------------------------------------------------
-<input type ="text" id ="myinput" oninput="flushCombo(false)" style="width:197px; height:20px;" placeholder="请输入关键词" onfocus="showDiv(this)" onfocusout="setDivHidden()"/>
-<button onclick="updateLi()">点我就加Li</button>
+<input type ="text" id ="myinput" oninput="flushCombo(false)" style="width:197px; height:20px;" placeholder="请输入关键词" onfocus="showDiv(this)"/>
+<input type="hidden" id="myinputChoice" value=""/>
+<input type = "button" name ="button" onClick="testRes();" value="测试结果">
 <div id="msg">
 	<ul id="msgul" style="list-style-type:none;padding:5px;margin:0;">
-		<li class="bg">liu2yi1@test.com</li>
-		<li class="bg">liu2er4@test.com</li>
-		<li class="bg">zheng4ba1@test.com</li>
-		<li class="bg">zheng4jiu3@test.com</li>
-		<li class="bg">zheng4shi2@test.com</li>
 	</ul>
 </div>
 </body>
