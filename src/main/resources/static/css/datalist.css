@@ -1,0 +1,17 @@
+#msg{
+	display:none;
+	position:absolute;
+	background:#C0C0C0;
+	width:200px;
+	height:300px;
+	overflow:auto;
+	scrollbar-base-color: gray;
+    scrollbar-track-color: #A9A9A9;
+
+}
+.bg{
+    background-color: #C0C0C0;
+}
+.bg:hover{
+    background-color: burlywood;
+}
