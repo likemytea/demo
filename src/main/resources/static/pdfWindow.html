@@ -28,7 +28,7 @@ function showpdf(isshow){
 			//调用展示方法
 			var input = {'MMMMMhaha 433fsf 哈哈':'ddd',bbb:'ccccc'};
 			JSON.stringify(input);
-			PDFObject.embed("http://localhost:8080/getPdfFile?input="+encodeURIComponent(JSON.stringify(input)), "#my-pdf", options);	
+			PDFObject.embed("/getPdfFile?input="+encodeURIComponent(JSON.stringify(input)), "#my-pdf", options);	
 
 		return;
 	}
