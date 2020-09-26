@@ -37,22 +37,23 @@ function flushCombo(isOnfocusEvent){
 	var reg =  new RegExp(input);
 	//获取原始数据
 	var original = getOriginalData();
-	//解析为数组
-	var dataArray = JSON.parse(original);
+	//解析为数组(如果本身就是数组，则不用解析)
+	//var dataArray = JSON.parse(original);
 	
 	//清空层里边所有的li
 	$("#msgul").find("li").remove();
-	
+	//追加默认li
+	updateLi('','全部');
 	//遍历数组
-	for (var i = 0, l = dataArray.length; i < l; i++) {
+	for (var i = 0, l = original.length; i < l; i++) {
 		var theval='';
 		var thekey='';
-	    for (var key in dataArray[i]) {
+	    for (var key in original[i]) {
 	    	//找到某一条里边的name
 	    	if(key=='name'){
 	    		//确定这个name是否满足搜索条件
-	    		if(reg.test(dataArray[i][key])||isOnfocusEvent){
-	    			theval = dataArray[i][key];
+	    		if(reg.test(original[i][key])||isOnfocusEvent){
+	    			theval = original[i][key];
 	    		}else{
 		    		continue;
 		    	}
@@ -60,7 +61,7 @@ function flushCombo(isOnfocusEvent){
 	    	}
 	    	//设置name对应的业务key
 	    	if(key=='strVal'){
-	    		thekey=dataArray[i][key];
+	    		thekey=original[i][key];
 	    	}
 	    	//过滤掉没用的数据，因为执行到这里的还可能是数组中name前的key-value
 	    	if(theval.length>0&&thekey.length>0){
