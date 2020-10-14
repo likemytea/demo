@@ -73,7 +73,8 @@ function flushCombo(isOnfocusEvent){
 
 $(document).ready(function() {
 	//li点击事件
-    $(document).on("click", "li.bg", function() {
+	//jquery1.7后建议用 ON $(document).on("click", "li.bg", function() {
+    $("li.bg").live("click", function() {
     	//赋值隐藏域，用于传给后台
         document.getElementById("myinputChoice").value = $(this).attr('id');
         //赋值给text文本框
