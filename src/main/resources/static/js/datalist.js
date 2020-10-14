@@ -24,7 +24,10 @@ function showDiv(o)
 //更新li
 function updateLi(thekey,theval){
 	var ele = document.createElement('li');
-	ele.innerHTML='<li id="'+thekey+'" class="bg">'+theval+'</li>';
+	var t = document.createTextNode(theval);
+	ele.setAttribute("id",thekey);
+	ele.className='bg';
+	ele.appendChild(t);
 	document.getElementById('msgul').appendChild(ele);
 }
 
