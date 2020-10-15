@@ -7,6 +7,7 @@
 	overflow:auto;
 	scrollbar-base-color: gray;
     scrollbar-track-color: #A9A9A9;
+    z-index:2;
 
 }
 .bg{

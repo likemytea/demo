@@ -28,11 +28,26 @@ HTML自身有datalist控件，几乎支持所有主流浏览器，唯独在IE11�
 <br/>
 <br/>
 》》》》》》》》》》》》》》》》》》
-<input type ="text" id ="myinput" oninput="flushCombo(false)" style="width:197px; height:20px;" placeholder="请输入关键词，默认为全部" onfocus="showDiv(this)"/>
+<input type ="text" id ="myinput" onpropertychange="flushCombo(false)" oninput="flushCombo(false)" style="width:197px; height:20px;" placeholder="请输入关键词，默认为全部" onfocus="showDiv(this)"/>
 <input type="hidden" id="myinputChoice" value=""/>
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》<br/>
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》<br/>
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》<br/>
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》<br/>
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》<br/>
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》<br/>
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》<br/>
 <input type = "button" name ="button" onClick="testRes();" value="获取选中的KEY">
 <div id="msg">
 	<ul id="msgul" style="list-style-type:none;padding:5px;margin:0;">
+	</ul>
+</div>
+<div id="mssdfsg">
+	<ul id="msgsdfdsdul" style="list-style-type:none;padding:5px;margin:0;">
+	<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+	<li>aaaaaaaaaaasdfaaaaaaaadddddddddddddddddddaaaaaa</li>
+	<li>aaaaaaaaaaaasdfaaaaaaaasddddddddddddddddddddddddddfaaaaa</li>
+	<li>aaaaaaaaaaaaaaaasdfsfsfdddddddddddddddddddaaasdfsdfaaaaaa</li>
 	</ul>
 </div>
 </body>
