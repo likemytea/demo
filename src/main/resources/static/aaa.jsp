@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>HTML5仿电脑端微信聊天窗口界面代码</title>
+	<title>HTML5仿电脑端微111信聊天窗口界面代码</title>
 	<link rel="stylesheet" href="http://test.mystaticdomain.com/mychat/css/reset.min.css">
 	<link rel="stylesheet" href="http://test.mystaticdomain.com/mychat/css/style.css">
 	<script src="http://test.mystaticdomain.com/js/jquery.min.js?v=2.1.4"></script>
