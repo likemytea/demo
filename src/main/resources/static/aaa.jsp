@@ -10,7 +10,7 @@
 	<script src="http://test.mystaticdomain.com/js/socket.io.min.1.7.4.js"></script>
 </head>
 <body>
-
+aaaaaa
 <div class="wrapper">
 	<div class="container">
         <div class="left">
